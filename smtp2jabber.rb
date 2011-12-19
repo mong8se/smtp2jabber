@@ -67,7 +67,7 @@ class Smtp2Jabber < EM::Protocols::SmtpServer
         return true
     end
 
-    # I had sdome code here to check the connection and reconnect
+    # I had some code here to check the connection and reconnect
     # if necessary, but looking at the code for xmpp4r-simple, it
     # looks like that's already done for us.
     def im(*messages)

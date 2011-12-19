@@ -2,7 +2,9 @@
 
 == What
 
-An eventmachine-based simple smtp to jabber gateway.
+An eventmachine based, simple smtp to jabber gateway.
+
+Emails sent to this fake smtp server are sent to a jabber account.
 
 == Why
 
