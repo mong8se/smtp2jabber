@@ -36,7 +36,7 @@ class Smtp2Jabber < EM::Protocols::SmtpServer
 
     # Get set up to recieve mail
     def receive_data_command
-        @headers_finished = nil
+        @headers_finished = false
         @body = []
         @headers = {}
 
@@ -48,7 +48,7 @@ class Smtp2Jabber < EM::Protocols::SmtpServer
         data.each do |line|
             if @headers_finished
                 @body << line
-            elsif line.empty? && @headers_finished.nil?
+            elsif line.empty?
                 @headers_finished = true
             else
                 name, value = line.split(': ', 2)
@@ -71,7 +71,7 @@ class Smtp2Jabber < EM::Protocols::SmtpServer
     # if necessary, but looking at the code for xmpp4r-simple, it
     # looks like that's already done for us.
     def im(*messages)
-        @@jabbers[@from].deliver @rcpt_to || @headers[:To], messages.join
+        @@jabbers[@from].deliver @rcpt_to || @headers['To'], messages.join
     end
 end
 
