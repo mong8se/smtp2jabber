@@ -1,0 +1,35 @@
+= smtp2jabber
+
+== What
+
+An eventmachine-based simple smtp to jabber gateway.
+
+== Why
+
+I built this for monit to IM me alerts.
+
+== How
+
+* Put it somewhere on your path, executable
+* Set the PID file to go to somewhere readable
+* Setup upstart or an init script to run it as an unprivileged user
+* Configure monit to use it as the global smtp server, with the username/password being the username/password for the jabber account you want the messages to come FROM.
+* Configure monit to send the alerts to the jabber account you wan the messages to go TO
+* Configure monit to run the upstart job/init script to run this thang
+
+Better docs/example config will come later.
+
+   NOTE: the craziest bit is that whatever username/password
+   are sent as authentication to the smtp server, are what is
+   used to log into jabber. So there isn't any authentication
+   on the smtp server--only have it listen on localhost!
+
+   This may be too crazy!
+
+Version 0'1
+
+=== Copyright
+©2011 Steven Moazami
+
+=== License
+Some kind of GPL as-is provided software thingee, stand by.
